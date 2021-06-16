@@ -239,7 +239,8 @@ MonoBehaviour:
   minimalHeight: -15
   isCheatMode: 1
   groundDetection: {fileID: 2066174982257798882}
-  direction: {x: 0, y: 0, z: 0}
+  animator: {fileID: 711641766}
+  spriteRenderer: {fileID: 1222443720163396718}
 --- !u!114 &505272450
 MonoBehaviour:
   m_ObjectHideFlags: 0

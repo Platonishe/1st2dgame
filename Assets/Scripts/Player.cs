@@ -10,8 +10,10 @@ public class Player : MonoBehaviour
     public float minimalHeight;
     public bool isCheatMode;
     public GroundDetection groundDetection;
-    public Vector3 direction;
-    
+    private Vector3 direction;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
     void FixedUpdate()
     {
         direction = Vector3.zero; // (0, 0)
@@ -33,6 +35,18 @@ public class Player : MonoBehaviour
         {
             rigidbody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
         }
+
+        if(direction.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+        if (direction.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        animator.SetFloat("Speed", Mathf.Abs(direction.x));
 
         CheckFall();
     
