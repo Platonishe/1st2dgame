@@ -6,6 +6,7 @@ public class Damage : MonoBehaviour
 {
     public int damage = 10;
     public string collisionTag;
+    [SerializeField] private Animator enemyanimator;
 
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -13,6 +14,10 @@ public class Damage : MonoBehaviour
         {
             Health health = col.gameObject.GetComponent<Health>();
             health.TakeHit(damage);
+            enemyanimator.SetTrigger("IsTouch");
         }
+       
+
+
     }
 }

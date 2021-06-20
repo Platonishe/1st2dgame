@@ -13,9 +13,16 @@ public class Player : MonoBehaviour
     private Vector3 direction;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+    private bool isJumping;
 
     void FixedUpdate()
     {
+        animator.SetBool("IsGrounded", groundDetection.isGrounded);
+        if (!isJumping && !groundDetection.isGrounded)
+        {
+            animator.SetTrigger("StartFall");
+        }
+        isJumping = groundDetection.isGrounded;
         direction = Vector3.zero; // (0, 0)
         if (Input.GetKey(KeyCode.A))
         {
@@ -34,6 +41,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && groundDetection.isGrounded)
         {
             rigidbody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+            animator.SetTrigger("StartJump");
+            isJumping = true;
         }
 
         if(direction.x > 0)
