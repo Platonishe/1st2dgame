@@ -8,11 +8,14 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Coin"))
+        if (gameObject.CompareTag("Player"))
         {
-            coinsCount++;
-            Destroy(col.gameObject);
-            Debug.Log("Количество монет = " + coinsCount);
+            if (col.gameObject.CompareTag("Coin"))
+            {
+                coinsCount++;
+                Destroy(col.gameObject);
+                Debug.Log("Количество монет = " + coinsCount);
+            }
         }
     }
 }

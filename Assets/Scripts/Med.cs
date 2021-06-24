@@ -8,7 +8,7 @@ public class Med : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.CompareTag("Player"))
         {
             Health health = col.gameObject.GetComponent<Health>();
             health.SetHealth(bonusHealth);
