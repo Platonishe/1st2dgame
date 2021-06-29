@@ -11,11 +11,30 @@ public class OOP : MonoBehaviour
         public int weight;
         public int height;
         public int tail_length;
-    }
-    
-    public void Mew()
-    {
-        Debug.Log("ћое им€ - " + name + ", мой рост -" + height + ",  мне " + age + "лет, € вешу " + weight + "килограмм и длина моего хвоста целых" + tall_length + "сантиметров");
+
+        public Cat()
+        {
+            name = "Barsik";
+            height = 35;
+            age = 5;
+            weight = 3;
+            tail_length = 20;
+        }
+
+        public Cat(string name, int age, int weight, int height, int tail_length)
+        {
+            this.name = name;
+            this.age = age;
+            this.weight = weight;
+            this.height = height;
+            this.tail_length = tail_length;
+        }
+
+
+        public void Mew()
+        {
+            Debug.Log("ћое им€ - " + name + ", мой рост -" + height + ",  мне " + age + "лет, € вешу " + weight + "килограмм и длина моего хвоста целых" + tail_length + "сантиметров");
+        }
     }
 
     private void Start()
@@ -27,16 +46,37 @@ public class OOP : MonoBehaviour
         cat.weight = 3;
         cat.tail_length = 20;
         cat.Mew();
+
+        //Dog dog = new Dog();
+        //dog.name = sobaken;
+        //dog.age = 5;
+        //dog.height = 17;
     }
-       
-        
+
+    //class Dog
+    //{
+    //    public string name;
+    //    public int age;
+    //    public int height;
+    //    public void Woof()
+
+
+    //}
+
+    private int age;
+
+    public int getAge()
+    {
+        return age;
+    }
+  
+    public void setAge(int value)
+    {
+        if (value >= 0 && value < 100)
+        {
+            age = value;
+        }   
+    }
     
-
-
-
-
-
-
-
-
+   
 }  
