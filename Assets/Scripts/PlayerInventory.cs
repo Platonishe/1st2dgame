@@ -6,6 +6,13 @@ public class PlayerInventory : MonoBehaviour
 {
     public int coinsCount;
 
+    public void Awake()
+    {
+        Instance = this;
+    }
+
+    public static PlayerInventory Instance { get; set; }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (gameObject.CompareTag("Player"))

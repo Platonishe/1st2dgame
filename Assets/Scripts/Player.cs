@@ -15,6 +15,16 @@ public class Player : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     private bool isJumping;
 
+    
+    
+    public void Awake()
+    {
+        Instance = this;
+    }
+    
+    public static Player Instance { get; set; }
+    
+    
     void FixedUpdate()
     {
         animator.SetBool("IsGrounded", groundDetection.isGrounded);
