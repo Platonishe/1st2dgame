@@ -19,7 +19,8 @@ public class PlayerInventory : MonoBehaviour
         {
             if (col.gameObject.CompareTag("Coin"))
             {
-                coinsCount++;
+                
+                PlayerInventory.Instance.coinsCount++;
                 Destroy(col.gameObject);
                 Debug.Log("Количество монет = " + coinsCount);
             }
