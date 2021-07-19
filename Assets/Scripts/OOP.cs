@@ -39,18 +39,35 @@ public class OOP : MonoBehaviour
 
     private void Start()
     {
-        Cat cat = new Cat();
-        cat.name = "Barsik";
-        cat.height = 35;
-        cat.age = 5;
-        cat.weight = 3;
-        cat.tail_length = 20;
-        cat.Mew();
+        //Cat cat = new Cat();
+        //cat.name = "Barsik";
+        //cat.height = 35;
+        //cat.age = 5;
+        //cat.weight = 3;
+        //cat.tail_length = 20;
+        //cat.Mew();
 
         //Dog dog = new Dog();
         //dog.name = sobaken;
         //dog.age = 5;
         //dog.height = 17;
+
+
+        bus bus = new bus();
+        bus.name = "avtobus";
+        bus.Beep();
+
+        car car = new car();
+        car.name = "mashina";
+        car.Beep();
+
+        tractor tractor = new tractor();
+        tractor.name = "tractor";
+        tractor.Beep();
+
+
+
+
     }
 
     //class Dog
@@ -79,4 +96,42 @@ public class OOP : MonoBehaviour
     }
     
    
+    class Vehicle
+    {
+        public string name;
+       
+        public virtual void Beep()
+        {
+            Debug.Log("beep");
+        }
+    }
+
+    class bus : Vehicle
+    {
+        public override void Beep()
+        {
+            Debug.Log("1");
+        }
+    }
+
+    class car : Vehicle
+    {
+        public override void Beep()
+        {
+            Debug.Log("2");
+        }
+    }
+
+    class tractor : Vehicle
+    {
+        public override void Beep()
+        {
+            Debug.Log("3");
+        }
+    }
+
+
+
+
+
 }  
