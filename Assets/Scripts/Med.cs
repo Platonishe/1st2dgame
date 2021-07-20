@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Med : MonoBehaviour
 {
-    public int bonusHealth;
+    private int bonusHealth;
+    public int BonusHealth
+    {
+        get { return bonusHealth; }
+        set
+        {
+            if ( value > 1 )
+            bonusHealth = value;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {

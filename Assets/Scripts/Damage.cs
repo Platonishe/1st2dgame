@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public int damage = 10;
+    private int damage = 10;
+    public int Uron
+    {
+        get { return damage; }
+        set
+        {
+            if ( value > 10 )
+            damage = value;
+        }
+    }
     public string collisionTag;
     [SerializeField] private Animator enemyanimator;
 

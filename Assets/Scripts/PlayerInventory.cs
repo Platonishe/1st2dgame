@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public int coinsCount;
+    private int coinsCount;
+
+    public int CoinsCount
+    {
+        get { return coinsCount; }
+        set
+        {
+            if ( value > 1 )
+            coinsCount = value;
+        }
+    }
 
     public void Awake()
     {

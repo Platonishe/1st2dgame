@@ -4,19 +4,76 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 2.5f;
-    public Rigidbody2D rigidbody;
-    public float force;
-    public float minimalHeight;
-    public bool isCheatMode;
-    public GroundDetection groundDetection;
-    private Vector3 direction;
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
-    private bool isJumping;
+    private float speed = 2.5f;
+   
+    public float Speed
+    {
+        get { return speed; }
+        set
+        {
+            if ( value > 10 )
+            speed = value;
+        }
+    }
 
+
+    private Rigidbody2D rigidbody;
+    private float force = 2.5f;
+    public float Force
+    {
+        get { return force; }
+        set
+        {
+            if (value > 2.5f)
+            force = value;
+        }
+    }
+
+
+    private float minimalHeight;
+    public float MinimalHeight
+    {
+        get { return minimalHeight; }
+        set
+        {
+            if (value > 2.1f)
+            minimalHeight = value;
+        } 
+    }
+
+
+    private bool isCheatMode;
+   
+    public bool IsCheatMode
+    {
+        get { return isCheatMode; }
+        set
+        {
+            if ( value = true )
+            isCheatMode = value;
+        }
+    }
+
+
+    private GroundDetection groundDetection;
+    private Vector3 direction;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private bool isJumping;
     
-    
+    public bool IsJumping
+    {
+        get { return isJumping; }
+        set
+        {
+            if ( value = true )
+            isJumping = value;
+        }
+    }
+
+
+
+
     public void Awake()
     {
         Instance = this;

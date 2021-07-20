@@ -8,8 +8,27 @@ public class EnemyPatrol : MonoBehaviour
     public GameObject rightBorder;
     public Rigidbody2D rigidbody;
     public GroundDetection groundDetection;
-    public bool isRightDirection;
-    public float speed;
+    
+    private bool isRightDirection;
+    public bool IsRightDirection
+    {
+        get { return isRightDirection; }
+        set
+        {
+            if ( value = true )
+            isRightDirection = value;
+        }
+    }
+    private float speed;
+    public float Speed
+    {
+        get { return speed; }
+        set
+        {
+            if ( value > 1.2f )
+            speed = value;
+        }
+    }
     public SpriteRenderer enemyspriteRenderer;
     public Animator enemyanimator;
 

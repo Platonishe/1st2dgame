@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int health;
+    private int health;
+    public int Life
+    {
+        get { return health; }
+        set
+        {
+            if ( value > 10 )
+            health = value;
+        }
+    }
 
     public void TakeHit(int damage)
     {
