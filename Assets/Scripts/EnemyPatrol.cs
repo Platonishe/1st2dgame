@@ -8,15 +8,18 @@ public class EnemyPatrol : MonoBehaviour
     public GameObject rightBorder;
     public Rigidbody2D rigidbody;
     public GroundDetection groundDetection;
-    
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Damage damage;
+
+
     private bool isRightDirection;
     public bool IsRightDirection
     {
         get { return isRightDirection; }
         set
         {
-            if ( value = true )
-            isRightDirection = value;
+            if (value = true)
+                isRightDirection = value;
         }
     }
     private float speed;
@@ -25,8 +28,8 @@ public class EnemyPatrol : MonoBehaviour
         get { return speed; }
         set
         {
-            if ( value > 1.2f )
-            speed = value;
+            if (value > 1.2f)
+                speed = value;
         }
     }
     public SpriteRenderer enemyspriteRenderer;
@@ -39,21 +42,28 @@ public class EnemyPatrol : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isRightDirection)
+       if (groundDetection.isGrounded)
+       {
+            if (transform.position.x > rightBorder.transform.position.x || damage.Direction < 0)
+                isRightDirection = false;
+            else if (transform.position.x < leftBorder.transform.position.x || damage.Direction > 0)
+                isRightDirection = true;
+            rigidbody.velocity = isRightDirection ? Vector2.right : Vector2.left;
+            rigidbody.velocity *= speed;
+            
+       }
+        
+        if (rigidbody.velocity.x > 0)
         {
-            rigidbody.velocity = Vector2.right * speed;
-            if (transform.position.x > rightBorder.transform.position.x)
-                isRightDirection = !isRightDirection;
-            enemyspriteRenderer.flipX = true;
+            spriteRenderer.flipX = true;
         }
-        else if (groundDetection.isGrounded)
+        
+        if (rigidbody.velocity.x < 0)
         {
-            rigidbody.velocity = Vector2.left * speed;
-            if (transform.position.x < leftBorder.transform.position.x)
-                isRightDirection = !isRightDirection;
-            enemyspriteRenderer.flipX = false;
+            spriteRenderer.flipX = false;
+        }
+        
 
-        }
 
     }
 }

@@ -15,18 +15,38 @@ public class Damage : MonoBehaviour
         }
     }
     public string collisionTag;
-    [SerializeField] private Animator enemyanimator;
+    private Health health;
 
-    private void OnCollisionEnter2D(Collision2D col)
+    [SerializeField] private Animator enemyanimator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private float direction;
+    
+    public float Direction
+    {
+        get { return direction; }
+    }
+
+    private void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.CompareTag(collisionTag))
         {
             Health health = col.gameObject.GetComponent<Health>();
-            health.TakeHit(damage);
-            enemyanimator.SetTrigger("IsTouch");
+            if (health != null)
+            {
+                direction = (col.transform.position - transform.position).x;
+                enemyanimator.SetFloat("Direction", Mathf.Abs(direction));
+            }
+
         }
-       
-
-
     }
+    
+    public void SetDamage()
+    {
+        if (health != null)
+            health.TakeHit(damage);
+        health = null;
+        direction = 0;
+        enemyanimator.SetFloat("Direction", 0f);
+    }
+
 }
